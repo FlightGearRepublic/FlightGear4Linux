@@ -13,25 +13,35 @@
 
 # TODO: Define initial variables.
 
-# set_variables function, it will create and set variables that will be used by the script.
-# Among others, compiler flags and install destination will be set here.
-set_variables () {
+# TODO: Add function to detect if FlightGear was already installed with either FGB or FlightGear4Linux
 
+# set_vars function, it will create and set variables that will be used by the script.
+# Among others, compiler flags and install destination will be set here.
+set_vars () {
+    function_name="set_vars"
+    echo "DEBUG "$function_name" - start"
+    echo "DEBUG "$function_name" - end"
 }
 
 # draw_intro function, it will draw an introduction to the software on the users screen.
 draw_intro () {
-
+    function_name="draw_intro"
+    echo "DEBUG "$function_name" - start"
+    echo "DEBUG "$function_name" - end"
 }
 
 # draw_menu function, it will draw on the a menu with the possible options for this software.
 draw_menu () {
-
+    function_name="draw_menu"
+    echo "DEBUG "$function_name" - start"
+    echo "DEBUG "$function_name" - end"
 }
 
 # set_dest function, it will set where FlightGear should be installed to.
 set_dest () {
-
+    function_name="set_dest"
+    echo "DEBUG "$function_name" - start"
+    echo "DEBUG "$function_name" - end"
 }
 
 # TODO: Add functions to:
@@ -41,32 +51,48 @@ set_dest () {
 # git_glone function, it will use git to clone a repository if not already
 # cloned and update it if it is already cloned.
 git_clone () {
-
+    function_name="git_clone"
+    echo "DEBUG "$function_name" - start"
+    echo "DEBUG "$function_name" - end"
 }
 
 # svn_checkout function, it will use subversion to clone a respository if not already
 # cloned and update it if it is already cloned.
 svn_checkout () {
-
+    function_name="svn_checkout"
+    echo "DEBUG "$function_name" - start"
+    echo "DEBUG "$function_name" - end"
 }
 
 # build_plib function, it will download the source of plib and then compile it.
 build_plib () {
-
+    function_name="build_plib"
+    echo "DEBUG "$function_name" - start"
+    echo "DEBUG "$function_name" - end"
 }
 
 # build_osg function, it will download the source code of OpenSceneGraph and then compile it.
 build_osg () {
-
+    function_name="build_osg"
+    echo "DEBUG "$function_name" - start"
+    echo "DEBUG "$function_name" - end"
 }
 
 # build_sg function, it will download the source code of SimGear and then compile it.
 build_sg () {
-
+    function_name="build_sg"
+    echo "DEBUG "$function_name" - start"
+    echo "DEBUG "$function_name" - end"
 }
 
 # build_fg function, it willd download the source code of FlightGear, then compile it and then
 # install it to the desired location.
 build_fg () {
-
+    function_name="build_fg"
+    echo "DEBUG "$function_name" - start"
+    echo "DEBUG "$function_name" - end"
 }
+
+set_vars
+draw_intro
+draw_menu
