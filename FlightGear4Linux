@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# FlightGear4Linux
+
+# ABOUT
+# This software will download the source code of FlightGear and it's main dependencies.
+# Then it will compiled them.
+# And finally, install them to your home folder.
+
+# AUTHOR
+# This software was originally created and written by Megaf <mmegaf (at) gmail.com> <https://github.com/Megaf>
+# On 30/10/2021
+
+# TODO: Define initial variables.
+
+# set_variables function, it will create and set variables that will be used by the script.
+# Among others, compiler flags and install destination will be set here.
+set_variables () {
+
+}
+
+# draw_intro function, it will draw an introduction to the software on the users screen.
+draw_intro () {
+
+}
+
+# draw_menu function, it will draw on the a menu with the possible options for this software.
+draw_menu () {
+
+}
+
+# set_dest function, it will set where FlightGear should be installed to.
+set_dest () {
+
+}
+
+# TODO: Add functions to:
+# set compiler options accoridng to users choice;
+# set FlightGear start options according to the users choice;
+
+# git_glone function, it will use git to clone a repository if not already
+# cloned and update it if it is already cloned.
+git_clone () {
+
+}
+
+# svn_checkout function, it will use subversion to clone a respository if not already
+# cloned and update it if it is already cloned.
+svn_checkout () {
+
+}
+
+# build_plib function, it will download the source of plib and then compile it.
+build_plib () {
+
+}
+
+# build_osg function, it will download the source code of OpenSceneGraph and then compile it.
+build_osg () {
+
+}
+
+# build_sg function, it will download the source code of SimGear and then compile it.
+build_sg () {
+
+}
+
+# build_fg function, it willd download the source code of FlightGear, then compile it and then
+# install it to the desired location.
+build_fg () {
+
+}
