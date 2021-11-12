@@ -43,10 +43,13 @@ set_vars () {
 # detect_distro function, it will detect the distro this script is running on.
 detect_distro () {
     function_name="detect_distro"
-    # TODO: Find many possibilities of distro names.
-    # Things to expect from the command bellow. Debian, 
-    distro="$(lsb_release -is)" # Will get distro name from the command lsb_release and set it as the value of "distro".
     echo "DEBUG "$function_name" - start"
+    # TODO: Find many possibilities of distro names.
+    # Things to expect from the commands bellow.
+    # Debian, Fedora, NixOS, 
+    lsb_distro="$(lsb_release -is)" # Will get distro name from the command lsb_release and set it as the value of "lsb_distro".
+    os_release-"$cat /etc/os-release | grep ^ID="
+    echo "You are running this script on "$distro""
     echo "DEBUG "$function_name" - end"
 }
 
