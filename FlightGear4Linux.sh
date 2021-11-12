@@ -11,6 +11,7 @@
 # This software was originally created and written by Megaf <mmegaf (at) gmail.com> <https://github.com/Megaf>
 # On 30/10/2021
 
+# TODO: Parse command line flags suchs as: install_destination, optimization_level.
 # TODO: Define initial variables.
 # TODO: Add function to detect if FlightGear was already installed with either FGB or FlightGear4Linux
 # TODO: Add function to detect Linux distribuiton.
