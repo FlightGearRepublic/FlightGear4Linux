@@ -26,9 +26,9 @@ set_vars () {
     safe_compiler_flags="-O2 -pipe -Wall -std=c++11 -mtune=native -march=native" # Optimize for stability.
     fast_compiler_flags="-Os -pipe -Wall -ffastmath -flto -mtune=native -march=native -mfpmath=both" # Optimize for performance. Potentially unstable.
     plib_flags=""
-    osg_flags=""
-    simgear_flags=""
-    flightgear_flags=""
+    osg_flags="-DBUILD_OSG_APPLICATIONS=0 -DBUILD_OSG_DEPRECATED_SERIALIZERS=0"
+    simgear_flags="-DBUILD_TESTING=0 -DENABLE_SIMD_CODE=1 -DENABLE_TESTS=0"
+    flightgear_flags="-DFG_BUILD_TYPE=Release -DBUILD_TESTING=0 -DENABLE_AUTOTESTING=0"
     # git repositories where the code will be downloaded from.
     plib_svn_url="svn://svn.code.sf.net/p/plib/code/trunk" # PLIB's Subversion Repo.
     osg_git_url="https://github.com/openscenegraph/OpenSceneGraph.git" # OpenSceneGraph Git Repo.
