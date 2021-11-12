@@ -12,114 +12,93 @@
 # On 30/10/2021
 
 # TODO: Define initial variables.
-
 # TODO: Add function to detect if FlightGear was already installed with either FGB or FlightGear4Linux
-
 # TODO: Add function to detect Linux distribuiton.
-
 # TODO: Add function to install dependencies.
-
 # TODO: List of required packages.
 
 # set_vars function, it will create and set variables that will be used by the script.
 # Among others, compiler flags and install destination will be set here.
 set_vars () {
-    function_name="set_vars"
-    echo "DEBUG "$function_name" - start"
     # Setting compiler flags.
     debug_compier_flags="-Og -mtune=native -march=native" # Optimze for debugging/developing.
     safe_compiler_flags="-O2 -pipe -Wall -std=c++11 -mtune=native -march=native" # Optimize for stability.
     fast_compiler_flags="-Os -pipe -Wall -ffastmath -flto -mtune=native -march=native -mfpmath=both" # Optimize for performance. Potentially unstable.
+    plib_flags=""
+    osg_flags=""
+    simgear_flags=""
+    flightgear_flags=""
     # git repositories where the code will be downloaded from.
-    osg_git_url="" # OpenSceneGraph Git Repo.
-    sg_git_url="" # SimGear Git Repo.
-    fg_git_url="" # FlightGear Git Repo.
-    fgdata_dit="" # FlightGear Data Git Repo.
+    plib_svn_url="svn://svn.code.sf.net/p/plib/code/trunk" # PLIB's Subversion Repo.
+    osg_git_url="https://github.com/openscenegraph/OpenSceneGraph.git" # OpenSceneGraph Git Repo.
+    sg_git_url="git://git.code.sf.net/p/flightgear/simgear" # SimGear Git Repo.
+    fg_git_url="git://git.code.sf.net/p/flightgear/flightgear" # FlightGear Git Repo.
+    fgdata_dit="git://git.code.sf.net/p/flightgear/fgdata" # FlightGear Data Git Repo.
     # Defaut directories destination.
+    source_dir="/tmp/FlightGear4Linux/"
     install_dir="/usr/local/" # Install destination.
-    echo "DEBUG "$function_name" - end"
 }
 
 # detect_distro function, it will detect the distro this script is running on.
 detect_distro () {
-    function_name="detect_distro"
-    echo "DEBUG "$function_name" - start"
     # TODO: Find many possibilities of distro names.
     # Things to expect from the commands bellow.
     # Debian, Fedora, NixOS, 
     lsb_distro="$(lsb_release -is)" # Will get distro name from the command lsb_release and set it as the value of "lsb_distro".
-    os_release-"$cat /etc/os-release | grep ^ID="
+#    os_release-"$(cat /etc/os-release | grep ^ID= | awk -F "=" '{print $2}')"
     echo "You are running this script on "$distro""
-    echo "DEBUG "$function_name" - end"
 }
 
 # Functions to install dependencies.
 # On Debian, Ubuntu and Mint derivatives.
 install_deps_debian () {
-    function_name="install_deps_debian"
-    echo "DEBUG "$function_name" - start"
-    echo "DEBUG "$function_name" - end"
 }
 
 # On Red Hat, Fedora, CentOS and derivatives.
 install_deps_redhat () {
-    function_name="install_deps_redhat"
-    echo "DEBUG "$function_name" - start"
-    echo "DEBUG "$function_name" - end"
 }
 
 # On SUSE and derivatives.
 install_deps_suse () {
-    function_name="install_deps_suse"
-    echo "DEBUG "$function_name" - start"
-    echo "DEBUG "$function_name" - end"
 }
 
 # On Arch, Manjaro and derivatives.
 install_deps_arch () {
-    function_name="install_deps_arch"
-    echo "DEBUG "$function_name" - start"
-    echo "DEBUG "$function_name" - end"
 }
 
 # install_dependencies function, it will run the function detect_distro followed by the
 # apropriate install_deps function.
 install_dependencies () {
-    function_name="install_dependencies"
-    echo "DEBUG "$function_name" - start"
     detect_distro # Detect distro on the computer this script is running from.
-    echo "DEBUG "$function_name" - end"
+}
+
+# draw_gui function, it draws some simple decoration where messages will be displayed.
+draw_gui () {
+    echo "!##! ""$message"" !##!"
 }
 
 # draw_intro function, it will draw an introduction to the software on the users screen.
 draw_intro () {
-    function_name="draw_intro"
-    echo "DEBUG "$function_name" - start"
-    echo "Welcome"
-    echo "DEBUG "$function_name" - end"
+    local message="Welcome to FlightGear4Linux."
+    draw_gui
 }
 
 # draw_menu function, it will draw on the a menu with the possible options for this software.
 draw_menu () {
-    function_name="draw_menu"
-    echo "DEBUG "$function_name" - start"
-    echo "DEBUG "$function_name" - end"
+    local message=""
+    draw_gui
 }
 
 # set_options function, it will set the options chosen in the menu.
 # TODO: Make this set compiler flags accoring to users preference.
 # TODO: This function should set install destination, compiling optings (debug vs stability vs performance),
 set_options () {
-    function_name="set_options"
-    echo "DEBUG "$function_name" - start"
-    echo "DEBUG "$function_name" - end"
+    local message=""
+    draw_gui
 }
 
 # set_dest function, it will set where FlightGear should be installed to.
 set_dest () {
-    function_name="set_dest"
-    echo "DEBUG "$function_name" - start"
-    echo "DEBUG "$function_name" - end"
 }
 
 # TODO: Add functions to:
@@ -129,50 +108,43 @@ set_dest () {
 # git_glone function, it will use git to clone a repository if not already
 # cloned and update it if it is already cloned.
 git_clone () {
-    function_name="git_clone"
-    echo "DEBUG "$function_name" - start"
-    echo "DEBUG "$function_name" - end"
+    git clone "$git_url" "$destination_dir"
 }
 
 # svn_checkout function, it will use subversion to clone a respository if not already
 # cloned and update it if it is already cloned.
 svn_checkout () {
-    function_name="svn_checkout"
-    echo "DEBUG "$function_name" - start"
-    echo "DEBUG "$function_name" - end"
+    cd "$source_dir"
+    svn checkout "$plib_svn_url"
 }
 
 # build_plib function, it will download the source of plib and then compile it.
 build_plib () {
-    function_name="build_plib"
-    echo "DEBUG "$function_name" - start"
-    echo "DEBUG "$function_name" - end"
 }
 
 # build_osg function, it will download the source code of OpenSceneGraph and then compile it.
 build_osg () {
-    function_name="build_osg"
-    echo "DEBUG "$function_name" - start"
-    echo "DEBUG "$function_name" - end"
 }
 
 # build_sg function, it will download the source code of SimGear and then compile it.
 build_sg () {
-    function_name="build_sg"
-    echo "DEBUG "$function_name" - start"
-    echo "DEBUG "$function_name" - end"
 }
 
 # build_fg function, it willd download the source code of FlightGear, then compile it and then
 # install it to the desired location.
 build_fg () {
-    function_name="build_fg"
-    echo "DEBUG "$function_name" - start"
-    echo "DEBUG "$function_name" - end"
 }
 
-set_vars
-draw_intro
-draw_menu
-set_options
-install_dependencies
+set_vars # Setting variables.
+draw_intro # Shows welcome message.
+draw_menu # Shows options menu.
+set_options # Set options.
+install_dependencies # Install dependencies for detected OS.
+
+# Building OSG.
+message="Building OSG."
+draw_gui
+git_url="$osg_git_url"
+destination_dir="$source_dir"/osg
+git_clone
+build_osg
