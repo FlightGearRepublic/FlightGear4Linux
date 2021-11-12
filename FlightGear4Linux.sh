@@ -116,7 +116,7 @@ git_clone () {
 # cloned and update it if it is already cloned.
 svn_checkout () {
     cd "$source_dir"
-    svn checkout "$plib_svn_url"
+    svn checkout "$plib_svn_url" "$destination_dir"
 }
 
 # build_plib function, it will download the source of plib and then compile it.
@@ -141,6 +141,8 @@ draw_intro # Shows welcome message.
 draw_menu # Shows options menu.
 set_options # Set options.
 install_dependencies # Install dependencies for detected OS.
+
+# Building PLIB.
 
 # Building OSG.
 message="Building OSG."
