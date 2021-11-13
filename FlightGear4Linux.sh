@@ -37,7 +37,7 @@ set_vars () {
     fgdata_dit="git://git.code.sf.net/p/flightgear/fgdata" # FlightGear Data Git Repo.
     # Defaut directories destination.
     source_dir="/tmp/FlightGear4Linux/"
-    install_dir="/usr/local/" # Install destination.
+    install_dir="$HOME""/FlightGear4Linux" # Install destination.
 }
 
 # detect_distro function, it will detect the distro this script is running on.
@@ -46,13 +46,24 @@ detect_distro () {
     # Things to expect from the commands bellow.
     # Debian, Fedora, NixOS, 
     lsb_distro="$(lsb_release -is)" # Will get distro name from the command lsb_release and set it as the value of "lsb_distro".
-#    os_release-"$(cat /etc/os-release | grep ^ID= | awk -F "=" '{print $2}')"
+#    os_release-"$(cat /etc/os-release | grep ^ID= | awk -F "=" '{print $2}')" # TODO: This is broken, fix it.
     echo "You are running this script on "$distro""
+}
+
+# draw_gui function, it draws some simple decoration where messages will be displayed.
+draw_gui () {
+    echo "!##! ""$message"" !##!"
 }
 
 # Functions to install dependencies.
 # On Debian, Ubuntu and Mint derivatives.
 install_deps_debian () {
+message="Installing dependencies required for building FlightGear on Debian based distros."
+draw_gui
+message="Using sudo apt to install them."
+draw_gui
+
+sudo apt install -y subversion build-essential git cmake ccache libgmp-dev subversion libboost-dev freeglut3-dev libopenal-dev zlib1g-dev liblzma-dev libcurl4-gnutls-dev libsdl2-dev libsdl1.2-dev libpoppler-glib-dev libjsoncpp-dev libudev-dev libnvtt-dev libnvtt2 libfreetype6-dev libsdl2-dev libsdl2-gfx-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-net-dev libsdl2-ttf-dev libjpeg-dev libxml2-dev libtiff-dev libpng-dev qtdeclarative5-dev qttools5-dev qtbase5-dev-tools qttools5-dev-tools qml-module-qtquick2 qml-module-qtquick-window2 qml-module-qtquick-dialogs libqt5opengl5-dev libqt5svg5-dev libqt5websockets5-dev qml-module-qtquick-controls2 libgtk2.0-dev librsvg2-dev libgtkglext1-dev libgtkglextmm-x11-1.2-dev libevent-dev libevent-extra-2.1-6 libevent-pthreads-2.1-6 libglew-dev
 }
 
 # On Red Hat, Fedora, CentOS and derivatives.
@@ -71,11 +82,6 @@ install_deps_arch () {
 # apropriate install_deps function.
 install_dependencies () {
     detect_distro # Detect distro on the computer this script is running from.
-}
-
-# draw_gui function, it draws some simple decoration where messages will be displayed.
-draw_gui () {
-    echo "!##! ""$message"" !##!"
 }
 
 # draw_intro function, it will draw an introduction to the software on the users screen.
